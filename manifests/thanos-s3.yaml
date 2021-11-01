@@ -1,0 +1,8 @@
+type: S3
+config:
+  bucket: "<bucket_name>"
+  endpoint: "s3.amazonaws.com"
+  region: "eu-west-2"  # change the region accordingly
+  access_key: "<access_key>"
+  secret_key: "<secret_key>"
+  insecure: true
