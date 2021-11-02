@@ -8,9 +8,9 @@ metadata:
     controller.receive.thanos.io/hashring: default
     part-of: thanos
   name: thanos-receive-default
-  namespace: thanos
+  namespace: tenant-a
 spec:
-  replicas: 2
+  replicas: 4
   selector:
     matchLabels:
       app: thanos-receive
@@ -101,7 +101,7 @@ metadata:
     controller.receive.thanos.io/hashring: default
     part-of: thanos
   name: thanos-receive-default
-  namespace: thanos
+  namespace: tenant-a
 spec:
   clusterIP: None
   ports:

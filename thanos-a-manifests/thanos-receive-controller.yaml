@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: thanos-receive-controller
-  namespace: thanos
+  namespace: tenant-a
   labels:
     part-of: thanos
     app: thanos-receive-controller
@@ -11,7 +11,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: thanos-receive-controller
-  namespace: thanos
+  namespace: tenant-a
   labels:
     part-of: thanos
     app: thanos-receive-controller
@@ -39,7 +39,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: thanos-receive-controller
-  namespace: thanos
+  namespace: tenant-a
   labels:
     part-of: thanos
     app: thanos-receive-controller
@@ -50,7 +50,7 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: thanos-receive-controller
-  namespace: thanos
+  namespace: tenant-a
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -59,7 +59,7 @@ metadata:
     app: thanos-receive-controller
     part-of: thanos
   name: thanos-receive-controller
-  namespace: thanos
+  namespace: tenant-a
 spec:
   replicas: 1
   selector:
@@ -77,7 +77,7 @@ spec:
         - --configmap-name=thanos-receive-base
         - --configmap-generated-name=thanos-receive-generated
         - --file-name=hashrings.json
-        - --namespace=thanos
+        - --namespace=tenant-a
         env:
         - name: NAMESPACE
           valueFrom:

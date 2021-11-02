@@ -3,29 +3,29 @@ kind: StatefulSet
 metadata:
   labels:
     app: thanos-receive
-    tenant: default-tenant
+    tenant: ab
     controller.receive.thanos.io: thanos-receive-controller
-    controller.receive.thanos.io/hashring: default
+    controller.receive.thanos.io/hashring: hashring-0
     part-of: thanos
-  name: thanos-receive-default
-  namespace: thanos
+  name: thanos-receive-hashring-0
+  namespace: tenant-a
 spec:
-  replicas: 2
+  replicas: 4
   selector:
     matchLabels:
       app: thanos-receive
-      tenant: default-tenant
+      tenant: ab
       controller.receive.thanos.io: thanos-receive-controller
-      controller.receive.thanos.io/hashring: default
+      controller.receive.thanos.io/hashring: hashring-0
       part-of: thanos
-  serviceName: thanos-receive-default 
+  serviceName: thanos-receive-hashring-0
   template:
     metadata:
       labels:
         app: thanos-receive
-        tenant: default-tenant
+        tenant: ab
         controller.receive.thanos.io: thanos-receive-controller
-        controller.receive.thanos.io/hashring: default
+        controller.receive.thanos.io/hashring: hashring-0
         part-of: thanos
     spec:
       affinity: {}
@@ -36,9 +36,9 @@ spec:
         - --objstore.config=$(OBJSTORE_CONFIG)
         - --tsdb.path=/var/thanos/receive
         - --label=receive_replica="$(NAME)"
-        - --receive.local-endpoint=$(NAME).thanos-receive-default.$(NAMESPACE).svc.cluster.local:10901
+        - --receive.local-endpoint=$(NAME).thanos-receive-hashring-0.$(NAMESPACE).svc.cluster.local:10901
+        - --receive.default-tenant-id=ab
         - --tsdb.retention=15d
-        - --receive.default-tenant-id=cluster
         - --receive.hashrings-file=/var/lib/thanos-receive/hashrings.json
         env:
         - name: NAME
@@ -97,11 +97,11 @@ kind: Service
 metadata:
   labels:
     app: thanos-receive
-    tenant: default-tenant
-    controller.receive.thanos.io/hashring: default
+    tenant: ab
+    controller.receive.thanos.io/hashring: hashring-0
     part-of: thanos
-  name: thanos-receive-default
-  namespace: thanos
+  name: thanos-receive-hashring-0
+  namespace: tenant-a
 spec:
   clusterIP: None
   ports:
@@ -116,7 +116,7 @@ spec:
     targetPort: 19291
   selector:
     app: thanos-receive
-    tenant: default-tenant
+    tenant: ab
     controller.receive.thanos.io: thanos-receive-controller
-    controller.receive.thanos.io/hashring: default
+    controller.receive.thanos.io/hashring: hashring-0
     part-of: thanos
