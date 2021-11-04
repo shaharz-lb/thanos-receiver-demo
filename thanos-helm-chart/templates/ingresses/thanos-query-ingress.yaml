@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  labels:
+    app: thanos-query
+    part-of: {{ .Values.namespace }}
+  name: thanos-query
+  namespace: {{ .Values.namespace }}
+spec:
+  rules:
+  - host: query.local
+    http:
+      paths:
+      - backend:
+          serviceName: thanos-query
+          servicePort: http
+        path: /

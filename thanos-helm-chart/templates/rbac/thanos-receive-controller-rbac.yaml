@@ -1,0 +1,44 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: thanos-receive-controller
+  namespace: {{ .Values.namespace }}
+  labels:
+    part-of: {{ .Values.namespace }}
+    app: thanos-receive-controller
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - configmaps
+  verbs:
+  - list
+  - watch
+  - get
+  - create
+  - update
+- apiGroups:
+  - apps
+  resources:
+  - statefulsets
+  verbs:
+  - list
+  - watch
+  - get
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: thanos-receive-controller
+  namespace: {{ .Values.namespace }}
+  labels:
+    part-of: {{ .Values.namespace }}
+    app: thanos-receive-controller
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: thanos-receive-controller
+subjects:
+- kind: ServiceAccount
+  name: thanos-receive-controller
+  namespace: {{ .Values.namespace }}

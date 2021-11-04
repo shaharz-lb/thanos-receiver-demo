@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: thanos-receive-base
+  namespace: {{ .Values.namespace }}
+  labels:
+    part-of: {{ .Values.namespace }}
+    app: thanos-receive-controller
+data:
+  hashrings.json: |
+    [
+        {
+            "hashring": "default",
+            "endpoints": 
+            [
+                    "thanos-receive-default-0.thanos-receive-default.{{ .Values.namespace }}.svc.cluster.local:10901" 
+            ]
+        }
+    ]
