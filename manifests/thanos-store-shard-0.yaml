@@ -5,7 +5,7 @@ metadata:
     app: thanos-store
     shard: shard-0
     tenant: a
-    part-of: thanos
+    part-of: tenant-a
   name: thanos-store-shard-0
   namespace: thanos
 spec:
@@ -15,7 +15,7 @@ spec:
       app: thanos-store
       shard: shard-0
       tenant: a
-      part-of: thanos
+      part-of: tenant-a
   serviceName: thanos-store-shard-0
   template:
     metadata:
@@ -23,7 +23,7 @@ spec:
         app: thanos-store
         shard: shard-0
         tenant: a
-        part-of: thanos
+        part-of: tenant-a
     spec:
       containers:
       - args:
@@ -76,7 +76,7 @@ metadata:
     app: thanos-store
     shard: shard-0
     tenant: a
-    part-of: thanos
+    part-of: tenant-a
   name: thanos-store-shard-0
   namespace: thanos
 spec:
@@ -92,4 +92,4 @@ spec:
     app: thanos-store
     shard: shard-0
     tenant: a
-    part-of: thanos
+    part-of: tenant-a

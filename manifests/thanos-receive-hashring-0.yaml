@@ -6,7 +6,7 @@ metadata:
     tenant: ab
     controller.receive.thanos.io: thanos-receive-controller
     controller.receive.thanos.io/hashring: hashring-0
-    part-of: thanos
+    part-of: tenant-a
   name: thanos-receive-hashring-0
   namespace: thanos
 spec:
@@ -17,7 +17,7 @@ spec:
       tenant: ab
       controller.receive.thanos.io: thanos-receive-controller
       controller.receive.thanos.io/hashring: hashring-0
-      part-of: thanos
+      part-of: tenant-a
   serviceName: thanos-receive-hashring-0
   template:
     metadata:
@@ -26,7 +26,7 @@ spec:
         tenant: ab
         controller.receive.thanos.io: thanos-receive-controller
         controller.receive.thanos.io/hashring: hashring-0
-        part-of: thanos
+        part-of: tenant-a
     spec:
       affinity: {}
       containers:
@@ -99,7 +99,7 @@ metadata:
     app: thanos-receive
     tenant: ab
     controller.receive.thanos.io/hashring: hashring-0
-    part-of: thanos
+    part-of: tenant-a
   name: thanos-receive-hashring-0
   namespace: thanos
 spec:
@@ -119,4 +119,4 @@ spec:
     tenant: ab
     controller.receive.thanos.io: thanos-receive-controller
     controller.receive.thanos.io/hashring: hashring-0
-    part-of: thanos
+    part-of: tenant-a

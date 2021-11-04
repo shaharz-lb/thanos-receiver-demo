@@ -4,7 +4,7 @@ metadata:
   name: thanos-receive-base
   namespace: tenant-a
   labels:
-    part-of: thanos
+    part-of: tenant-a
     app: thanos-receive-controller
 data:
   hashrings.json: |

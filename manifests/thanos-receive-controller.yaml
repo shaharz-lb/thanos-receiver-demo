@@ -4,7 +4,7 @@ metadata:
   name: thanos-receive-controller
   namespace: thanos
   labels:
-    part-of: thanos
+    part-of: tenant-a
     app: thanos-receive-controller
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -13,7 +13,7 @@ metadata:
   name: thanos-receive-controller
   namespace: thanos
   labels:
-    part-of: thanos
+    part-of: tenant-a
     app: thanos-receive-controller
 rules:
 - apiGroups:
@@ -41,7 +41,7 @@ metadata:
   name: thanos-receive-controller
   namespace: thanos
   labels:
-    part-of: thanos
+    part-of: tenant-a
     app: thanos-receive-controller
 roleRef:
   apiGroup: rbac.authorization.k8s.io
@@ -57,7 +57,7 @@ kind: Deployment
 metadata:
   labels:
     app: thanos-receive-controller
-    part-of: thanos
+    part-of: tenant-a
   name: thanos-receive-controller
   namespace: thanos
 spec:
@@ -65,12 +65,12 @@ spec:
   selector:
     matchLabels:
       app: thanos-receive-controller
-      part-of: thanos
+      part-of: tenant-a
   template:
     metadata:
       labels:
         app: thanos-receive-controller
-        part-of: thanos
+        part-of: tenant-a
     spec:
       containers:
       - args:

@@ -3,7 +3,7 @@ kind: Service
 metadata:
   labels:
     app: thanos-query
-    part-of: thanos
+    part-of: tenant-a
   name: thanos-query
   namespace: thanos
 spec:
@@ -17,4 +17,4 @@ spec:
     targetPort: http
   selector:
     app: thanos-query
-    part-of: thanos
+    part-of: tenant-a

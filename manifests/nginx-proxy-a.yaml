@@ -51,13 +51,13 @@ spec:
     matchLabels:
       app: nginx-proxy
       tenant: a
-      part-of: thanos
+      part-of: tenant-a
   template:
     metadata:
       labels:
         app: nginx-proxy
         tenant: a
-        part-of: thanos
+        part-of: tenant-a
     spec:
       containers:
       - name: nginx
