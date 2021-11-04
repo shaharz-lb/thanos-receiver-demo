@@ -40,8 +40,8 @@ spec:
         - --http-address=0.0.0.0:9090
         - --query.replica-label=prometheus_replica
         - --query.replica-label=receive_replica
-        - --store=dnssrv+_grpc._tcp.thanos-store-shard-0.thanos.svc.cluster.local
-        - --store=dnssrv+_grpc._tcp.thanos-receive-default.thanos.svc.cluster.local
+        - --store=dnssrv+_grpc._tcp.thanos-store-shard-0.tenant-a.svc.cluster.local
+        - --store=dnssrv+_grpc._tcp.thanos-receive-default.tenant-a.svc.cluster.local
           #- --store=dnssrv+_grpc._tcp.thanos-receive-hashring-0.thanos.svc.cluster.local
         - --query.timeout=15m
         image: quay.io/thanos/thanos:v0.23.1

@@ -10,10 +10,10 @@ data:
   hashrings.json: |
     [
         {
-            "hashring": "default",
-            "endpoints": 
-            [
-                    "thanos-receive-default-0.thanos-receive-default.tenant-a.svc.cluster.local:10901" 
-            ]
+            "hashring": "default"
+        },
+        {
+            "hashring": "hashring-0",
+            "tenants": ["tenant-a", "tenant-b"]
         }
     ]

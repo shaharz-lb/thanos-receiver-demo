@@ -4,6 +4,7 @@ metadata:
   name: rpc-app-service
   labels:
     app: rpc-app
+  namespace: tenant-a
 spec:
   ports:
   - name: web

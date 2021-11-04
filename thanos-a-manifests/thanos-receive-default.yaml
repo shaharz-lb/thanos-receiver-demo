@@ -10,7 +10,7 @@ metadata:
   name: thanos-receive-default
   namespace: tenant-a
 spec:
-  replicas: 4
+  replicas: 1
   selector:
     matchLabels:
       app: thanos-receive
@@ -32,7 +32,7 @@ spec:
       containers:
       - args:
         - receive
-        - --receive.replication-factor=2
+        - --receive.replication-factor=1
         - --objstore.config=$(OBJSTORE_CONFIG)
         - --tsdb.path=/var/thanos/receive
         - --label=receive_replica="$(NAME)"
@@ -40,7 +40,6 @@ spec:
         - --tsdb.retention=15d
         - --receive.default-tenant-id=cluster
         - --receive.hashrings-file=/var/lib/thanos-receive/hashrings.json
-          #- --remote-write.address="0.0.0.0:19291"
         env:
         - name: NAME
           valueFrom:

@@ -10,8 +10,10 @@ NAMESPACE=$1
 
 echo "Installing Thanos to ${NAMESPACE} namespace"
 
+kubectl create ns ${NAMESPACE}
+
 kubectl -n ${NAMESPACE} create secret generic thanos-objectstorage --from-file=thanos-s3.yaml
-kubectl -n ${NAMESPACE} label secrets thanos-objectstorage part-of=thanos
+kubectl -n ${NAMESPACE} label secrets thanos-objectstorage part-of=${NAMESPACE}
 
 kubectl -n ${NAMESPACE} apply -f thanos-receiver-hashring-configmap-base.yaml
 kubectl -n ${NAMESPACE} apply -f thanos-receive-controller.yaml

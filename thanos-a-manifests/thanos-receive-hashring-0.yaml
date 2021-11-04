@@ -36,7 +36,7 @@ spec:
         - --objstore.config=$(OBJSTORE_CONFIG)
         - --tsdb.path=/var/thanos/receive
         - --label=receive_replica="$(NAME)"
-        - --receive.local-endpoint=$(NAME).thanos-receive-hashring-0.$(NAMESPACE).svc.cluster.local:10901
+        - --receive.local-endpoint=thanos-receive-default.$(NAMESPACE).svc.cluster.local:10901
         - --receive.default-tenant-id=ab
         - --tsdb.retention=15d
         - --receive.hashrings-file=/var/lib/thanos-receive/hashrings.json

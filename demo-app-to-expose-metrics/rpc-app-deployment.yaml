@@ -4,6 +4,7 @@ metadata:
   name: rpc-app-deployment
   labels:
     app: rpc-app
+  namespace: tenant-a
 spec:
   replicas: 1
   selector:
